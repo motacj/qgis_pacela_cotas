@@ -581,7 +581,11 @@ class PacelaResultCotasPlugin:
         try:
             layer.saveStyleToDatabase("Pacela Cotas 1.1", "Estilo generado por el complemento", True, "")
         except Exception:
-            pass
+            QgsMessageLog.logMessage(
+                f"Error al guardar el estilo en la base de datos: {str(e)}", 
+                "MiPlugin", 
+                Qgis.MessageLevel.Warning
+            )
 
     @staticmethod
     def _set_labels(layer, field_name, placement, bold=False, buffer=False):

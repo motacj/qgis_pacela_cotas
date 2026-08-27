@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="500" viewBox="0 0 1600 500">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7fafc"/>
+      <stop offset="1" stop-color="#e8f0f7"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0L10 5L0 10Z" fill="#6993b8"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="500" rx="28" fill="url(#bg)"/>
+  <text x="800" y="54" text-anchor="middle" font-family="Arial, sans-serif" font-size="31" font-weight="700" fill="#17324d">Flujo de trabajo · Acotación de parcela GIS</text>
+
+  <g font-family="Arial, sans-serif">
+    <g transform="translate(40 92)">
+      <rect width="330" height="350" rx="22" fill="#fff"/>
+      <circle cx="40" cy="40" r="23" fill="#1769aa"/>
+      <text x="40" y="49" text-anchor="middle" font-size="25" font-weight="700" fill="#fff">1</text>
+      <text x="78" y="48" font-size="24" font-weight="700" fill="#17324d">Seleccionar</text>
+      <rect x="34" y="79" width="262" height="190" rx="12" fill="#eaf3e2" stroke="#aac68f" stroke-width="2"/>
+      <path d="M76 223L91 130L167 100L259 140L244 229L151 252Z" fill="#85bd58" stroke="#416b2d" stroke-width="5"/>
+      <path d="M88 219L93 193L110 206Z" fill="#fff" stroke="#17324d" stroke-width="3"/>
+      <circle cx="93" cy="194" r="7" fill="#ffd447" stroke="#17324d" stroke-width="2"/>
+      <text x="165" y="310" text-anchor="middle" font-size="18" fill="#49657d">Una parcela activa</text>
+      <text x="165" y="334" text-anchor="middle" font-size="18" fill="#49657d">y exactamente 1 selección</text>
+    </g>
+
+    <path d="M382 267H414" stroke="#6993b8" stroke-width="5" marker-end="url(#arrow)"/>
+
+    <g transform="translate(430 92)">
+      <rect width="330" height="350" rx="22" fill="#fff"/>
+      <circle cx="40" cy="40" r="23" fill="#1769aa"/>
+      <text x="40" y="49" text-anchor="middle" font-size="25" font-weight="700" fill="#fff">2</text>
+      <text x="78" y="48" font-size="24" font-weight="700" fill="#17324d">Ejecutar</text>
+      <rect x="54" y="91" width="222" height="80" rx="14" fill="#1769aa"/>
+      <path d="M82 128H123M102 108V149" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+      <text x="144" y="122" font-size="17" font-weight="700" fill="#fff">ACOTAR</text>
+      <text x="144" y="145" font-size="15" fill="#dfefff">PARCELA</text>
+      <rect x="54" y="196" width="222" height="67" rx="10" fill="#eef4f8" stroke="#bacbd8" stroke-width="2"/>
+      <circle cx="83" cy="229" r="14" fill="#62a63b"/>
+      <path d="M76 229L81 235L91 222" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+      <text x="108" y="236" font-size="18" fill="#284c67">Barra o menú Vector</text>
+      <text x="165" y="310" text-anchor="middle" font-size="18" fill="#49657d">Acotar parcela</text>
+      <text x="165" y="334" text-anchor="middle" font-size="18" fill="#49657d">seleccionada</text>
+    </g>
+
+    <path d="M772 267H804" stroke="#6993b8" stroke-width="5" marker-end="url(#arrow)"/>
+
+    <g transform="translate(820 92)">
+      <rect width="330" height="350" rx="22" fill="#fff"/>
+      <circle cx="40" cy="40" r="23" fill="#1769aa"/>
+      <text x="40" y="49" text-anchor="middle" font-size="25" font-weight="700" fill="#fff">3</text>
+      <text x="78" y="48" font-size="24" font-weight="700" fill="#17324d">Configurar</text>
+      <rect x="45" y="82" width="240" height="196" rx="12" fill="#f7f9fb" stroke="#bacbd8" stroke-width="2"/>
+      <g font-size="16" fill="#284c67">
+        <text x="65" y="116">Escala</text><rect x="176" y="95" width="86" height="28" rx="5" fill="#fff" stroke="#96adbe"/><text x="219" y="116" text-anchor="middle">1:500</text>
+        <text x="65" y="158">Decimales</text><rect x="176" y="137" width="86" height="28" rx="5" fill="#fff" stroke="#96adbe"/><text x="219" y="158" text-anchor="middle">2</text>
+        <text x="65" y="200">Separación</text><rect x="176" y="179" width="86" height="28" rx="5" fill="#fff" stroke="#96adbe"/><text x="219" y="200" text-anchor="middle">Auto</text>
+        <text x="65" y="242">Campo</text><rect x="176" y="221" width="86" height="28" rx="5" fill="#fff" stroke="#96adbe"/><text x="219" y="242" text-anchor="middle">Ref.</text>
+      </g>
+      <text x="165" y="310" text-anchor="middle" font-size="18" fill="#49657d">Arial 8 pt y salida</text>
+      <text x="165" y="334" text-anchor="middle" font-size="18" fill="#49657d">GeoPackage</text>
+    </g>
+
+    <path d="M1162 267H1194" stroke="#6993b8" stroke-width="5" marker-end="url(#arrow)"/>
+
+    <g transform="translate(1210 92)">
+      <rect width="350" height="350" rx="22" fill="#fff"/>
+      <circle cx="40" cy="40" r="23" fill="#1769aa"/>
+      <text x="40" y="49" text-anchor="middle" font-size="25" font-weight="700" fill="#fff">4</text>
+      <text x="78" y="48" font-size="24" font-weight="700" fill="#17324d">Revisar</text>
+      <g transform="translate(45 86)">
+        <path d="M50 145L62 47L150 19L246 76L213 167L117 183Z" fill="#dbeed2" stroke="#416b2d" stroke-width="4"/>
+        <path d="M30 161L42 31M42 31L152 0M152 0L270 70M270 70L231 190" fill="none" stroke="#17324d" stroke-width="3"/>
+        <g fill="#17324d" font-size="14" font-weight="700">
+          <text x="54" y="163">V1</text><text x="53" y="42">V2</text><text x="151" y="16">V3</text><text x="249" y="75">V4</text><text x="210" y="181">V5</text>
+        </g>
+        <text x="142" y="109" text-anchor="middle" font-size="16" font-weight="700" fill="#1769aa">Sup. GIS=842,37 m²</text>
+      </g>
+      <text x="175" y="310" text-anchor="middle" font-size="18" fill="#49657d">5 capas persistentes</text>
+      <text x="175" y="334" text-anchor="middle" font-size="18" fill="#49657d">con el mismo run_id</text>
+    </g>
+  </g>
+</svg>

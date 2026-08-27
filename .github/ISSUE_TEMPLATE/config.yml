@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: QGIS user documentation
+    url: https://docs.qgis.org/3.44/en/docs/user_manual/
+    about: Check the official QGIS documentation for general QGIS questions.

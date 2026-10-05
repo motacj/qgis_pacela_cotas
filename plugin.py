@@ -32,12 +32,18 @@ from qgis.core import (
 
 from .core import (
     DEFAULT_TEXT_POINTS,
+<<<<<<< HEAD
     detect_arc_dimensions,
+=======
+>>>>>>> 894f7ebb0fbf01477b3a2eb6f3c2b975ce459cab
     dimension_for_edge,
     map_height_from_points,
     open_ring,
     outside_label_point,
+<<<<<<< HEAD
     readable_angle,
+=======
+>>>>>>> 894f7ebb0fbf01477b3a2eb6f3c2b975ce459cab
     spanish_number,
 )
 from .dialog import SettingsDialog
@@ -106,7 +112,10 @@ class PacelaResultCotasPlugin:
             PLUGIN_TITLE,
             "Acotación creada correctamente.\n\n"
             f"Vértices: {result['vertex_count']}\n"
+<<<<<<< HEAD
             f"Arcos acotados por radio: {result['arc_count']}\n"
+=======
+>>>>>>> 894f7ebb0fbf01477b3a2eb6f3c2b975ce459cab
             f"Superficie GIS: {spanish_number(result['area'], 2)} m²\n"
             f"Base de datos: {config['path']}",
         )
@@ -136,11 +145,15 @@ class PacelaResultCotasPlugin:
 
     @staticmethod
     def _is_metric_projected(crs):
+<<<<<<< HEAD
         return (
             crs.isValid()
             and not crs.isGeographic()
             and crs.mapUnits() == Qgis.DistanceUnit.Meters
         )
+=======
+        return crs.isValid() and not crs.isGeographic() and crs.mapUnits() == Qgis.DistanceUnit.Meters
+>>>>>>> 894f7ebb0fbf01477b3a2eb6f3c2b975ce459cab
 
     def _metric_geometry(self, source_layer, source_feature):
         source_crs = source_layer.crs()
@@ -209,6 +222,7 @@ class PacelaResultCotasPlugin:
         parcel_feature = QgsFeature(parcel_layer.fields())
         parcel_feature.setGeometry(geometry)
         parcel_feature.setAttributes(
+<<<<<<< HEAD
             [
                 run_id,
                 source_layer.name(),
@@ -217,6 +231,9 @@ class PacelaResultCotasPlugin:
                 crs.authid() or crs.description(),
                 timestamp,
             ]
+=======
+            [run_id, source_layer.name(), source_feature.id(), area, crs.authid() or crs.description(), timestamp]
+>>>>>>> 894f7ebb0fbf01477b3a2eb6f3c2b975ce459cab
         )
         if not parcel_layer.dataProvider().addFeature(parcel_feature):
             raise RuntimeError("No se pudo preparar la geometría de la parcela.")
@@ -235,10 +252,13 @@ class PacelaResultCotasPlugin:
                 QgsField("texto", QVariant.String, len=64),
                 QgsField("angulo", QVariant.Double, len=10, prec=4),
                 QgsField("escala", QVariant.Double, len=12, prec=0),
+<<<<<<< HEAD
                 QgsField("radio_m", QVariant.Double, len=20, prec=4),
                 QgsField("arco_g", QVariant.Double, len=12, prec=4),
                 QgsField("ajuste_m", QVariant.Double, len=20, prec=4),
                 QgsField("num_seg", QVariant.Int),
+=======
+>>>>>>> 894f7ebb0fbf01477b3a2eb6f3c2b975ce459cab
             ],
         )
         vertex_layer = self._memory_layer(
@@ -289,7 +309,10 @@ class PacelaResultCotasPlugin:
         polygons = geometry.asMultiPolygon() if geometry.isMultipart() else [geometry.asPolygon()]
         vertex_number = 1
         side_number = 1
+<<<<<<< HEAD
         arc_count = 0
+=======
+>>>>>>> 894f7ebb0fbf01477b3a2eb6f3c2b975ce459cab
         for part_index, polygon in enumerate(polygons, start=1):
             for ring_index, qgs_ring in enumerate(polygon, start=1):
                 ring = open_ring((point.x(), point.y()) for point in qgs_ring)
@@ -326,6 +349,7 @@ class PacelaResultCotasPlugin:
                     if not vertex_label_layer.dataProvider().addFeature(label_feature):
                         raise RuntimeError(f"No se pudo preparar el rótulo del vértice {number}.")
 
+<<<<<<< HEAD
                 arcs = []
                 if config.get("detect_arcs", True):
                     arcs = detect_arc_dimensions(
@@ -388,6 +412,13 @@ class PacelaResultCotasPlugin:
                             QgsPointXY(point[0], point[1])
                         )
                         return geometry.contains(point_geometry)
+=======
+                for index, start in enumerate(ring):
+                    end = ring[(index + 1) % len(ring)]
+
+                    def is_inside(point):
+                        return geometry.contains(QgsGeometry.fromPointXY(QgsPointXY(point[0], point[1])))
+>>>>>>> 894f7ebb0fbf01477b3a2eb6f3c2b975ce459cab
 
                     try:
                         dim = dimension_for_edge(
@@ -426,6 +457,7 @@ class PacelaResultCotasPlugin:
                                 text_value,
                                 dim.angle,
                                 config["reference_scale"],
+<<<<<<< HEAD
                                 None,
                                 None,
                                 None,
@@ -437,6 +469,12 @@ class PacelaResultCotasPlugin:
                                 "No se pudo preparar la geometría del lado "
                                 f"{side_number}."
                             )
+=======
+                            ]
+                        )
+                        if not dimension_layer.dataProvider().addFeature(feature):
+                            raise RuntimeError(f"No se pudo preparar la geometría del lado {side_number}.")
+>>>>>>> 894f7ebb0fbf01477b3a2eb6f3c2b975ce459cab
                     side_number += 1
                 vertex_number += len(ring)
 
@@ -458,6 +496,7 @@ class PacelaResultCotasPlugin:
             leader_feature = QgsFeature(dimension_layer.fields())
             leader_feature.setGeometry(self._line_geometry(leader_segment))
             leader_feature.setAttributes(
+<<<<<<< HEAD
                 [
                     run_id,
                     "llamada",
@@ -473,16 +512,23 @@ class PacelaResultCotasPlugin:
                     None,
                     None,
                 ]
+=======
+                [run_id, "llamada", None, None, None, None, "", 0.0, config["reference_scale"]]
+>>>>>>> 894f7ebb0fbf01477b3a2eb6f3c2b975ce459cab
             )
             if not dimension_layer.dataProvider().addFeature(leader_feature):
                 raise RuntimeError("No se pudo preparar la llamada de superficie.")
 
         area_feature = QgsFeature(surface_layer.fields())
+<<<<<<< HEAD
         area_feature.setGeometry(
             QgsGeometry.fromPointXY(
                 QgsPointXY(surface_point[0], surface_point[1])
             )
         )
+=======
+        area_feature.setGeometry(QgsGeometry.fromPointXY(QgsPointXY(surface_point[0], surface_point[1])))
+>>>>>>> 894f7ebb0fbf01477b3a2eb6f3c2b975ce459cab
         area_feature.setAttributes(
             [run_id, area, field_name, field_value, surface_location, area_text]
         )
@@ -498,12 +544,16 @@ class PacelaResultCotasPlugin:
         ):
             self._write_or_append(layer, output_path)
 
+<<<<<<< HEAD
         return {
             "run_id": run_id,
             "vertex_count": vertex_number - 1,
             "arc_count": arc_count,
             "area": area,
         }
+=======
+        return {"run_id": run_id, "vertex_count": vertex_number - 1, "area": area}
+>>>>>>> 894f7ebb0fbf01477b3a2eb6f3c2b975ce459cab
 
     @staticmethod
     def _memory_layer(geometry_type, name, crs, fields):
@@ -660,7 +710,10 @@ class PacelaResultCotasPlugin:
             categories = []
             for value, label, color, width in (
                 ("dimension", "Línea de cota", "25,25,25", "0.38"),
+<<<<<<< HEAD
                 ("radio", "Cota de radio", "0,76,153", "0.48"),
+=======
+>>>>>>> 894f7ebb0fbf01477b3a2eb6f3c2b975ce459cab
                 ("referencia", "Línea de referencia", "45,45,45", "0.28"),
                 ("trazo", "Trazo de terminación", "25,25,25", "0.45"),
                 ("llamada", "Llamada de superficie", "25,25,25", "0.32"),
@@ -686,6 +739,7 @@ class PacelaResultCotasPlugin:
         layer.triggerRepaint()
         # El GeoPackage admite guardar el estilo QGIS como estilo predeterminado.
         try:
+<<<<<<< HEAD
             layer.saveStyleToDatabase(
                 "Pacela Cotas 1.2",
                 "Estilo generado por el complemento",
@@ -694,6 +748,15 @@ class PacelaResultCotasPlugin:
             )
         except Exception:
             pass
+=======
+            layer.saveStyleToDatabase("Pacela Cotas 1.1", "Estilo generado por el complemento", True, "")
+        except Exception:
+            QgsMessageLog.logMessage(
+                f"Error al guardar el estilo en la base de datos: {str(e)}", 
+                "MiPlugin", 
+                Qgis.MessageLevel.Warning
+            )
+>>>>>>> 894f7ebb0fbf01477b3a2eb6f3c2b975ce459cab
 
     @staticmethod
     def _set_labels(layer, field_name, placement, bold=False, buffer=False):

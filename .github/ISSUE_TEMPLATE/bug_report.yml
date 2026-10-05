@@ -1,0 +1,60 @@
+name: Bug report
+description: Report a reproducible problem in the QGIS plugin
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a problem. Do not attach confidential parcel data.
+  - type: input
+    id: qgis_version
+    attributes:
+      label: QGIS version
+      placeholder: 3.44.2
+    validations:
+      required: true
+  - type: dropdown
+    id: operating_system
+    attributes:
+      label: Operating system
+      options:
+        - Windows
+        - Linux
+        - macOS
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: plugin_version
+    attributes:
+      label: Plugin version
+      placeholder: 1.1.1
+    validations:
+      required: true
+  - type: input
+    id: crs
+    attributes:
+      label: Layer CRS
+      placeholder: EPSG:25830
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Describe the input geometry, settings and exact sequence.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Actual and expected result
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: QGIS error or log
+      render: shell

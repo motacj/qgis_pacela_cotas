@@ -20,15 +20,19 @@ vértices numerados, tabla de coordenadas X/Y, superficie interior o exterior
 con llamada y persistencia de todos los elementos en un GeoPackage. No genera
 únicamente capas temporales de memoria.
 
-## Requisitos pendientes antes de subir
+## Estado de preparación
 
-1. Subir al repositorio público el código fuente descomprimido, no solamente el
-   ZIP.
-2. Confirmar que funcionan las URL de `homepage`, `repository` y `tracker`.
-3. Probar la instalación y una ejecución completa en QGIS 3.44.2 para Windows.
-4. Si es posible, repetir una prueba básica en Linux o macOS.
-5. Grabar y publicar el vídeo de demostración; después, sustituir el enlace
-   provisional del README por su URL pública.
+- Código fuente sincronizado con la versión 1.2.0, sin archivos ZIP en el
+  repositorio público.
+- URL públicas de `homepage`, `repository` y `tracker` incluidas en los
+  metadatos.
+- Licencia `GPL-2.0-or-later` declarada en `metadata.txt` y en `LICENSE`.
+- Construcción reproducible, pruebas unitarias y validación automática mediante
+  GitHub Actions.
+
+Antes de enviar el ZIP se recomienda realizar una ejecución visual completa en
+QGIS 3.44.2 para Windows. Si es posible, conviene repetir una prueba básica en
+Linux o macOS. El vídeo demostrativo continúa siendo opcional.
 
 ## Envío
 

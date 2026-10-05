@@ -20,6 +20,7 @@ REQUIRED_METADATA = (
     "version",
     "author",
     "email",
+    "license",
     "repository",
 )
 REQUIRED_LINKS = ("homepage", "repository", "tracker")
@@ -41,6 +42,7 @@ LEGACY_ENUM_PATTERNS = (
         r"(?:CreateOrOverwriteLayer|CreateOrOverwriteFile|NoError)\b"
     ),
 )
+CONFLICT_MARKERS = ("<<<<<<<", "=======", ">>>>>>>")
 
 
 def check_python(path: str, source: str, errors: list[str], warnings: list[str]) -> None:
@@ -161,7 +163,13 @@ def validate(archive: Path) -> tuple[list[str], list[str]]:
 
             for name in names:
                 if name.endswith(".py"):
-                    check_python(name, package.read(name).decode("utf-8"), errors, warnings)
+                    source = package.read(name).decode("utf-8")
+                    if any(marker in source for marker in CONFLICT_MARKERS):
+                        errors.append(f"Unresolved merge conflict in {name}")
+                    check_python(name, source, errors, warnings)
+
+            if any(marker in metadata_text for marker in CONFLICT_MARKERS):
+                errors.append("Unresolved merge conflict in metadata.txt")
     except (OSError, UnicodeDecodeError, zipfile.BadZipFile) as exc:
         errors.append(f"Cannot validate package: {exc}")
     return errors, warnings

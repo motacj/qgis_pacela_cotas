@@ -1,0 +1,24 @@
+[general]
+name=Acotación de parcela GIS
+qgisMinimumVersion=3.28
+qgisMaximumVersion=3.99
+description=Automatically creates persistent parcel dimensions, recognizes approximated circular arcs, and produces numbered vertices, coordinate tables and area labels in a GeoPackage.
+version=1.2.0
+author=Jesús Mota Campayo
+email=atom.susej@gmail.com
+about=Parcel-focused dimensioning tool for cadastral and municipal plans. Select one polygon and the plugin creates persistent dimension lines, extension lines and ticks; recognizes chains of short segments that approximate a circular arc and replaces their individual dimensions with one radius dimension; creates a numbered vertex layer, an X/Y coordinate table and an area label that is placed outside with a leader when it does not fit inside the parcel. An attribute from the source parcel can be included in the area label. Results are stored in Pacela_result_cotas.gpkg and previous runs are preserved. Unlike general CAD dimensioning plugins, this tool performs the complete parcel workflow in one operation and stores the results directly in a GeoPackage instead of temporary memory layers. No external Python dependencies are required. The input layer or QGIS project must use a projected CRS in metres.
+    Herramienta específica para planos parcelarios y municipales. Selecciona un polígono y genera cotas persistentes, reconoce cadenas de segmentos cortos que forman aproximadamente un arco y las sustituye por una cota de radio, además de crear vértices numerados, tabla X/Y y superficie.
+category=Vector
+icon=icon.png
+homepage=https://github.com/motacj/qgis_pacela_cotas#readme
+tracker=https://github.com/motacj/qgis_pacela_cotas/issues
+repository=https://github.com/motacj/qgis_pacela_cotas
+experimental=False
+deprecated=False
+server=False
+hasProcessingProvider=False
+tags=cadastre,parcel,dimensioning,coordinates,vertices,area,geopackage,annotation
+changelog=1.2.0 - Added configurable circular-arc recognition for chains of short segments and replaces their individual dimensions with one radius dimension. Updated scoped enum usage for QGIS validation.
+    1.1.1 - Prepared for the official QGIS Plugins Repository: GPL-2.0-or-later license, English metadata, PNG icon, publication guide and privacy information.
+    1.1.0 - Added 8 pt labels, minimum dimension offset, exterior vertex labels, area callout and optional source field.
+    1.0.0 - Initial release.

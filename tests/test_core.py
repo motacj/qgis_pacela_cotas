@@ -3,7 +3,14 @@
 from __future__ import annotations
 
 import math
+import sys
 import unittest
+from pathlib import Path
+
+# GitHub Actions ejecuta las pruebas desde la raíz del repositorio. Añadimos
+# su carpeta padre para que el directorio del repositorio pueda importarse
+# como el paquete ``qgis_pacela_cotas`` tanto en CI como en local.
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 from qgis_pacela_cotas.core import (
     detect_arc_dimensions,
